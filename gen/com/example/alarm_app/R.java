@@ -88,12 +88,13 @@ public final class R {
         public static final int activity_other_notes=0x7f030005;
         public static final int activity_out_bed=0x7f030006;
         public static final int activity_rel_tags=0x7f030007;
-        public static final int activity_sleep_well=0x7f030008;
-        public static final int activity_sleeping_time=0x7f030009;
-        public static final int activity_sleepy_value=0x7f03000a;
-        public static final int fragment_alarm=0x7f03000b;
-        public static final int fragment_clock=0x7f03000c;
-        public static final int fragment_stopwatch=0x7f03000d;
+        public static final int activity_setinbedtime=0x7f030008;
+        public static final int activity_sleep_well=0x7f030009;
+        public static final int activity_sleeping_time=0x7f03000a;
+        public static final int activity_sleepy_value=0x7f03000b;
+        public static final int fragment_alarm=0x7f03000c;
+        public static final int fragment_clock=0x7f03000d;
+        public static final int fragment_stopwatch=0x7f03000e;
     }
     public static final class menu {
         public static final int main=0x7f070000;

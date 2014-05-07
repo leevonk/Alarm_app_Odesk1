@@ -2,6 +2,7 @@ package com.meshcron.alarm_app;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,11 +21,13 @@ import android.widget.Toast;
 import com.example.alarm_app.R;
 
 public class Other_notes extends Activity {
+	private final String TAG = "Other_notes";
 	Button cont_other;
 	EditText notes;
 	String dayOfTheWeek;
 	int count=1;
 	int today;
+	private int prescribed_sleep_time_min, prescribed_sleep_time_hour, get_con;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -32,10 +35,10 @@ public class Other_notes extends Activity {
 		setContentView(R.layout.activity_other_notes);
 		cont_other=(Button)findViewById(R.id.cont_notes);
 		notes=(EditText)findViewById(R.id.edt_notes);
-		SimpleDateFormat sdf = new SimpleDateFormat("EEEE");
+		SimpleDateFormat sdf = new SimpleDateFormat("EEEE",Locale.US);
 		Date d = new Date();
 		SharedPreferences get_coun = getSharedPreferences("count", Context.MODE_PRIVATE);
-        int get_con= get_coun.getInt("count",0);
+        get_con = get_coun.getInt("count",0);
         if(get_con>7){
         	count=1;
         	SharedPreferences day1 = getSharedPreferences("monday", Context.MODE_PRIVATE);
@@ -59,9 +62,22 @@ public class Other_notes extends Activity {
 	         SharedPreferences day7 = getSharedPreferences("sunday", Context.MODE_PRIVATE);
 	         int d7_hours= day7.getInt("hours",0);
 	         int d7_mins=day7.getInt("mins",0);
-	         int average_sleep_hours=d1_hours+d2_hours+d3_hours+d4_hours+d5_hours+d6_hours+d7_hours;
-	         int average_sleep_mins=d1_mins+d2_mins+d3_mins+d4_mins+d5_mins+d6_mins+d7_mins;
-	         int prescribed_sleep_time=average_sleep_mins+30;
+	         
+	         int average_sleep_hours=(d1_hours + d2_hours + d3_hours + d4_hours + d5_hours + d6_hours + d7_hours)/7;
+	         Log.i("TAG","average_sleep_hour:- " + average_sleep_hours);
+	         
+	         int average_sleep_mins= (d1_mins + d2_mins + d3_mins + d4_mins + d5_mins + d6_mins + d7_mins)/7;
+	         Log.i(TAG, "average_sleep_min:- " + average_sleep_mins);
+	         
+	         prescribed_sleep_time_min = average_sleep_mins + 30;
+	         prescribed_sleep_time_hour = average_sleep_hours;
+	         if(prescribed_sleep_time_min > 59){
+	        	 prescribed_sleep_time_hour = prescribed_sleep_time_hour + (prescribed_sleep_time_min / 60);
+	        	 prescribed_sleep_time_min = prescribed_sleep_time_min % 60;
+	         }
+	         Log.i(TAG, "prescribed_sleep_time:- " + prescribed_sleep_time_hour + " : " + prescribed_sleep_time_min);
+	         
+	         
         }
 	    dayOfTheWeek = sdf.format(d);
 		Log.e("day",dayOfTheWeek);
@@ -101,7 +117,7 @@ public class Other_notes extends Activity {
 				 Toast.makeText(Other_notes.this,
 			               String.valueOf(tot_hours)+":"+String.valueOf(tot_mins) , Toast.LENGTH_SHORT).show();
 				 notes.setText("");
-				 if(dayOfTheWeek=="Monday"){
+				 if(dayOfTheWeek.equals("Monday")){
 					 SharedPreferences mon = getSharedPreferences("monday", Context.MODE_PRIVATE);
 						Editor editor_m = mon.edit();
 						editor_m.putInt("hours",tot_hours);
@@ -111,7 +127,7 @@ public class Other_notes extends Activity {
 						Intent in=new Intent(Other_notes.this,Alarm_tab.class);
 						startActivity(in);
 				 }
-				 else if(dayOfTheWeek=="Tuesday"){
+				 else if(dayOfTheWeek.equals("Tuesday")){
 					 SharedPreferences tues = getSharedPreferences("tuesday", Context.MODE_PRIVATE);
 						Editor editor_tu = tues.edit();
 						editor_tu.putInt("hours",tot_hours);
@@ -119,7 +135,7 @@ public class Other_notes extends Activity {
 						editor.commit();
 						count++;
 				 }
-				 else if(dayOfTheWeek=="Wednesday"){
+				 else if(dayOfTheWeek.equals("Wednesday")){
 					 SharedPreferences wed = getSharedPreferences("Wednesday", Context.MODE_PRIVATE);
 						Editor editor_wed = wed.edit();
 						editor_wed.putInt("hours",tot_hours);
@@ -127,7 +143,7 @@ public class Other_notes extends Activity {
 						editor.commit();
 						count++;
 				 }
-				 else if(dayOfTheWeek=="Thursday"){
+				 else if(dayOfTheWeek.equals("Thursday")){
 					 SharedPreferences thu = getSharedPreferences("thursday", Context.MODE_PRIVATE);
 						Editor editor_thu = thu.edit();
 						editor_thu.putInt("hours",tot_hours);
@@ -135,7 +151,7 @@ public class Other_notes extends Activity {
 						editor.commit();
 						count++;
 				 }
-				 else if(dayOfTheWeek=="Friday"){
+				 else if(dayOfTheWeek.equals("Friday")){
 					 SharedPreferences fri = getSharedPreferences("friday", Context.MODE_PRIVATE);
 						Editor editor_fri = fri.edit();
 						editor_fri.putInt("hours",tot_hours);
@@ -143,7 +159,7 @@ public class Other_notes extends Activity {
 						editor.commit();
 						count++;
 				 }
-				 else if(dayOfTheWeek=="Saturday"){
+				 else if(dayOfTheWeek.equals("Saturday")){
 					 SharedPreferences sat = getSharedPreferences("Saturday", Context.MODE_PRIVATE);
 						Editor editor_sat = sat.edit();
 						editor_sat.putInt("hours",tot_hours);
@@ -151,7 +167,7 @@ public class Other_notes extends Activity {
 						editor.commit();
 						count++;
 				 }
-				 else if(dayOfTheWeek=="Sunday"){
+				 else if(dayOfTheWeek.equals("Sunday")){
 					 SharedPreferences sun = getSharedPreferences("Sunday", Context.MODE_PRIVATE);
 						Editor editor_sun = sun.edit();
 						editor_sun.putInt("hours",tot_hours);
@@ -163,7 +179,28 @@ public class Other_notes extends Activity {
 					Editor editor_coun = coun.edit();
 					editor_coun.putInt("count",count);
 					editor.commit();
+					
+				//If its finish of one week need to show set In Bed time activity on continue 	
+				if(get_con>7){
+					startSetInBedTimeAcitvity();
+				}
 			}
 		});
+	}
+	/*
+	 * Starting screen to show In Bed time and to adjust it.
+	 */
+	private void startSetInBedTimeAcitvity(){
+		Intent i = new Intent(Other_notes.this, SetInBedTime.class);
+        SharedPreferences sp = getSharedPreferences("lay_time", Context.MODE_PRIVATE);
+        int start_hr = sp.getInt("hour", 0);
+        int start_min = sp.getInt("min", 0);
+        Bundle b = new Bundle();
+        b.putInt("start_hr", start_hr);
+        b.putInt("start_min", start_min);
+        b.putInt("prescribed_sleep_time_hour", prescribed_sleep_time_hour);
+        b.putInt("prescribed_sleep_time_min", prescribed_sleep_time_min);
+        i.putExtra("data", b);
+        startActivity(i);
 	}
 }
