@@ -25,6 +25,7 @@ public class Lay_Down extends Activity {
 		cont=(Button)findViewById(R.id.btn_con);
 		cont.setOnClickListener(new OnClickListener() {
 			
+			@SuppressWarnings("deprecation")
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub

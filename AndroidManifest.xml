@@ -3,9 +3,14 @@
     package="com.example.alarm_app"
     android:versionCode="1"
     android:versionName="1.0" >
-<uses-permission android:name="android.permission.RECORD_AUDIO"></uses-permission>    
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>  
-<uses-feature android:name="android.hardware.sensor.light" />  
+
+    <uses-permission android:name="android.permission.RECORD_AUDIO" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" >
+    </uses-permission>
+
+    <uses-feature android:name="android.hardware.sensor.light" />
+
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
@@ -20,50 +25,53 @@
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name="com.meshcron.alarm_app.Sleepy_Value"
             android:label="@string/app_name" >
-            </activity>
-            <activity
+        </activity>
+        <activity
             android:name="com.meshcron.alarm_app.Sleeping_time"
             android:label="@string/app_name" >
-            </activity>
-            <activity
+        </activity>
+        <activity
             android:name="com.meshcron.alarm_app.Lay_Down"
             android:label="@string/app_name" >
-            </activity>
-            <activity
+        </activity>
+        <activity
             android:name="com.meshcron.alarm_app.Get_out"
             android:label="@string/app_name" >
-            </activity>
-            <activity
+        </activity>
+        <activity
             android:name="com.meshcron.alarm_app.Good_morning"
             android:label="@string/app_name" >
-            </activity>
-            <activity
+        </activity>
+        <activity
             android:name="com.meshcron.alarm_app.Awake"
             android:label="@string/app_name" >
-            </activity>
-             <activity
+        </activity>
+        <activity
             android:name="com.meshcron.alarm_app.Out_bed"
             android:label="@string/app_name" >
-            </activity>
-             <activity
+        </activity>
+        <activity
             android:name="com.meshcron.alarm_app.Rel_tags"
             android:label="@string/app_name" >
-            </activity>
-             <activity
+        </activity>
+        <activity
             android:name="com.meshcron.alarm_app.Sleep_well"
             android:label="@string/app_name" >
-            </activity>
-             <activity
+        </activity>
+        <activity
             android:name="com.meshcron.alarm_app.Other_notes"
             android:label="@string/app_name" >
-            </activity>
+        </activity>
+        <activity
+            android:name="com.meshcron.alarm_app.SetInBedTime"
+            android:label="@string/app_name" >
+        </activity>
     </application>
 
 </manifest>
