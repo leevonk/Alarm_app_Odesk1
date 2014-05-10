@@ -7,7 +7,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.Window;
+import android.widget.Button;
 import android.widget.SeekBar;
 import android.widget.SeekBar.OnSeekBarChangeListener;
 import android.widget.TextView;
@@ -18,6 +21,7 @@ public class SetInBedTime extends Activity{
 	private int inBedStartPointTotalMin;
 	private int inBedEndHour,inBedEndMin;
 	private int inBedTotalMin,inBedTotalHour;
+	private Button btnCont;
 	private SeekBar seekInBedStartTime;
 	private TextView textInBedStartTime, textInBedEndTime;
 	private String inBedStartTimeString, inBedEndTimeString;
@@ -53,28 +57,6 @@ public class SetInBedTime extends Activity{
 			}
 		});
 		
-//		seekInBedEndTime.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-//			
-//			@Override
-//			public void onStopTrackingTouch(SeekBar seekBar) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			@Override
-//			public void onStartTrackingTouch(SeekBar seekBar) {
-//				// TODO Auto-generated method stub
-//				
-//			}
-//			
-//			@Override
-//			public void onProgressChanged(SeekBar seekBar, int progress,
-//					boolean fromUser) {
-//				// TODO Auto-generated method stub
-//				inBedEndPointTotalMin = progress;
-//				setEndTimeDisplay(inBedEndPointTotalMin);
-//			}
-//		});
 		
 	}
 	
@@ -83,7 +65,17 @@ public class SetInBedTime extends Activity{
 		//seekInBedEndTime = (SeekBar)findViewById(R.id.seek_inBedEndTime);
 		//Setting seek bar limit to max 1 day mins
 		seekInBedStartTime.setMax(1440);
-		
+		btnCont = (Button)findViewById(R.id.btnContinue);
+		btnCont.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Intent i = new Intent(SetInBedTime.this, MainActivity.class);
+				i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+				startActivity(i);
+			}
+		});
 		textInBedStartTime = (TextView)findViewById(R.id.textInBedStartTime1);
 		textInBedEndTime = (TextView)findViewById(R.id.txtInBedEndTime);
 		
