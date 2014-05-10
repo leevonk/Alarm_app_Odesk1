@@ -83,7 +83,6 @@ public class SetInBedTime extends Activity{
 		//seekInBedEndTime = (SeekBar)findViewById(R.id.seek_inBedEndTime);
 		//Setting seek bar limit to max 1 day mins
 		seekInBedStartTime.setMax(1440);
-		//seekInBedEndTime.setMax(1440);
 		
 		textInBedStartTime = (TextView)findViewById(R.id.textInBedStartTime1);
 		textInBedEndTime = (TextView)findViewById(R.id.txtInBedEndTime);

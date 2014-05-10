@@ -4,38 +4,40 @@
     android:layout_height="match_parent"
     android:background="@drawable/alarm_gradient" >
 
+    <EditText
+        android:id="@+id/edt_notes"
+        android:layout_width="250dp"
+        android:layout_height="200dp"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:hint="Note"
+        android:background="#ffffff"
+        android:ems="10"
+        android:paddingLeft="5dp"
+        android:gravity="top"
+        android:singleLine="false"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/cont_notes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="54dp"
+        android:text="Continue"
+        android:textColor="#ffffff" />
+
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="66dp"
+        android:layout_marginTop="52dp"
         android:text="Any other Notes?"
-        android:textColor="#ffffff"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
-
-    <EditText
-        android:id="@+id/edt_notes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView1"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="91dp"
-        android:textColor="#ffffff"
-        android:ems="10" >
-
-        <requestFocus />
-    </EditText>
-
-    <Button
-        android:id="@+id/cont_notes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/edt_notes"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="77dp"
-        android:textColor="#ffffff"
-        android:text="Continue" />
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#ffffff" />
 
 </RelativeLayout>
