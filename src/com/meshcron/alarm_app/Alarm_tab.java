@@ -1,8 +1,5 @@
 package com.meshcron.alarm_app;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 import android.content.Context;
 import android.content.SharedPreferences;
