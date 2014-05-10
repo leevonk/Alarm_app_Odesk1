@@ -32,9 +32,10 @@ public final class R {
         public static final int time_icon=0x7f020008;
     }
     public static final class id {
+        public static final int TextView01=0x7f080023;
         public static final int ViewSwitcher=0x7f08002c;
         public static final int action_settings=0x7f080035;
-        public static final int btnContinue=0x7f080025;
+        public static final int btnContinue=0x7f080022;
         public static final int btn_con=0x7f08000d;
         public static final int btn_cont=0x7f080029;
         public static final int btn_conti=0x7f080002;
@@ -67,11 +68,10 @@ public final class R {
         public static final int rel_awake=0x7f080000;
         public static final int rel_clock=0x7f08002a;
         public static final int rel_get_out=0x7f080003;
-        public static final int seek_inBedEndTime=0x7f080026;
-        public static final int seek_inBedStartTime=0x7f080022;
+        public static final int seek_inBedStartTime=0x7f080020;
         public static final int seek_sleep=0x7f080027;
-        public static final int textInBedStart=0x7f080020;
-        public static final int textInBedStartTime=0x7f080021;
+        public static final int textInBedStart=0x7f080021;
+        public static final int textInBedStartTime1=0x7f080026;
         public static final int textView1=0x7f080001;
         public static final int textView2=0x7f080004;
         public static final int textView3=0x7f080005;
@@ -82,8 +82,8 @@ public final class R {
         public static final int textView8=0x7f08000a;
         public static final int textView9=0x7f08000c;
         public static final int toggle_change=0x7f08002b;
-        public static final int txtInBedEnd=0x7f080024;
-        public static final int txtInBedEndTime=0x7f080023;
+        public static final int txtInBedEnd=0x7f080025;
+        public static final int txtInBedEndTime=0x7f080024;
         public static final int txt_stop=0x7f08002d;
         public static final int txt_timer=0x7f080031;
     }

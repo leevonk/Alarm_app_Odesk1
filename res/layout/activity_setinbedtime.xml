@@ -5,48 +5,13 @@
     android:orientation="vertical" 
     android:background="@drawable/alarm_gradient">
 
- <TextView
-     android:id="@+id/textInBedStart"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:layout_alignParentLeft="false"
-     android:layout_alignParentTop="false"
-     android:layout_centerHorizontal="true"
-     android:layout_marginLeft="113dp"
-     android:layout_marginTop="33dp"
-     android:text="In Bed Start Time"
-     android:textAppearance="?android:attr/textAppearanceLarge"
-     android:textColor="#ffffff" />
-
- <TextView
-     android:id="@+id/textInBedStartTime"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:layout_below="@+id/textInBedStart"
-     android:layout_centerHorizontal="true"
-     android:layout_marginTop="20dp"
-     android:text="10:20"
-     android:textColor="#ffffff"
-     android:textAppearance="?android:attr/textAppearanceLarge" />
-
  <SeekBar
      android:id="@+id/seek_inBedStartTime"
      android:layout_width="match_parent"
      android:layout_height="wrap_content"
      android:layout_alignParentLeft="true"
-     android:layout_below="@+id/textInBedStartTime"
+     android:layout_below="@+id/textInBedStart"
      android:layout_marginTop="16dp" />
-
- <TextView
-     android:id="@+id/txtInBedEndTime"
-     android:layout_width="wrap_content"
-     android:layout_height="wrap_content"
-     android:layout_below="@+id/txtInBedEnd"
-     android:layout_centerHorizontal="true"
-     android:layout_marginTop="20dp"
-     android:text="10:20"
-     android:textAppearance="?android:attr/textAppearanceLarge"
-     android:textColor="#ffffff" />
 
  <Button
      android:id="@+id/btnContinue"
@@ -57,22 +22,59 @@
      android:layout_marginBottom="13dp"
      android:text="Continue" />
 
- <SeekBar
-     android:id="@+id/seek_inBedEndTime"
-     android:layout_width="match_parent"
+ <TextView
+     android:id="@+id/TextView01"
+     android:layout_width="wrap_content"
      android:layout_height="wrap_content"
+     android:layout_above="@+id/txtInBedEndTime"
      android:layout_alignParentLeft="true"
-     android:layout_below="@+id/txtInBedEndTime"
-     android:layout_marginTop="18dp" />
+     android:text="In Bed Start Time"
+     android:textAppearance="?android:attr/textAppearanceLarge"
+     android:textColor="#ffffff" />
 
  <TextView
      android:id="@+id/txtInBedEnd"
      android:layout_width="wrap_content"
      android:layout_height="wrap_content"
+     android:layout_alignParentRight="true"
      android:layout_below="@+id/seek_inBedStartTime"
-     android:layout_centerHorizontal="true"
-     android:layout_marginTop="15dp"
+     android:layout_marginTop="27dp"
      android:text="In Bed End Time"
+     android:textAppearance="?android:attr/textAppearanceLarge"
+     android:textColor="#ffffff" />
+
+ <TextView
+     android:id="@+id/textInBedStart"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentTop="true"
+     android:layout_centerHorizontal="true"
+     android:layout_marginTop="54dp"
+     android:text="In Bed Time"
+     android:textAppearance="?android:attr/textAppearanceLarge"
+     android:textColor="#ffffff" />
+
+ <TextView
+     android:id="@+id/textInBedStartTime1"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignBaseline="@+id/txtInBedEndTime"
+     android:layout_alignBottom="@+id/txtInBedEndTime"
+     android:layout_alignParentLeft="true"
+     android:layout_marginLeft="40dp"
+     android:text="10:20"
+     android:textAppearance="?android:attr/textAppearanceLarge"
+     android:textColor="#ffffff" />
+
+ <TextView
+     android:id="@+id/txtInBedEndTime"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_alignParentRight="true"
+     android:layout_below="@+id/txtInBedEnd"
+     android:layout_marginRight="40dp"
+     android:layout_marginTop="29dp"
+     android:text="10:20"
      android:textAppearance="?android:attr/textAppearanceLarge"
      android:textColor="#ffffff" />
 

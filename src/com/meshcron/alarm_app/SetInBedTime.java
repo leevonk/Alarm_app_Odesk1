@@ -17,9 +17,8 @@ public class SetInBedTime extends Activity{
 	private int inBedStartHour,inBedStartMin;
 	private int inBedStartPointTotalMin;
 	private int inBedEndHour,inBedEndMin;
-	private int inBedEndPointTotalMin;
 	private int inBedTotalMin,inBedTotalHour;
-	private SeekBar seekInBedStartTime, seekInBedEndTime;
+	private SeekBar seekInBedStartTime;
 	private TextView textInBedStartTime, textInBedEndTime;
 	private String inBedStartTimeString, inBedEndTimeString;
 
@@ -50,43 +49,43 @@ public class SetInBedTime extends Activity{
 					boolean fromUser) {
 				// TODO Auto-generated method stub
 				inBedStartPointTotalMin = progress;	
-				setStartTimeDisplay(inBedStartPointTotalMin);
+				setInBedTimeDisplay(inBedStartPointTotalMin);
 			}
 		});
 		
-		seekInBedEndTime.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
-			
-			@Override
-			public void onStopTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onStartTrackingTouch(SeekBar seekBar) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress,
-					boolean fromUser) {
-				// TODO Auto-generated method stub
-				inBedEndPointTotalMin = progress;
-				setEndTimeDisplay(inBedEndPointTotalMin);
-			}
-		});
+//		seekInBedEndTime.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
+//			
+//			@Override
+//			public void onStopTrackingTouch(SeekBar seekBar) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void onStartTrackingTouch(SeekBar seekBar) {
+//				// TODO Auto-generated method stub
+//				
+//			}
+//			
+//			@Override
+//			public void onProgressChanged(SeekBar seekBar, int progress,
+//					boolean fromUser) {
+//				// TODO Auto-generated method stub
+//				inBedEndPointTotalMin = progress;
+//				setEndTimeDisplay(inBedEndPointTotalMin);
+//			}
+//		});
 		
 	}
 	
 	private void initUi(){
 		seekInBedStartTime = (SeekBar)findViewById(R.id.seek_inBedStartTime);
-		seekInBedEndTime = (SeekBar)findViewById(R.id.seek_inBedEndTime);
+		//seekInBedEndTime = (SeekBar)findViewById(R.id.seek_inBedEndTime);
 		//Setting seek bar limit to max 1 day mins
 		seekInBedStartTime.setMax(1440);
-		seekInBedEndTime.setMax(1440);
+		//seekInBedEndTime.setMax(1440);
 		
-		textInBedStartTime = (TextView)findViewById(R.id.textInBedStartTime);
+		textInBedStartTime = (TextView)findViewById(R.id.textInBedStartTime1);
 		textInBedEndTime = (TextView)findViewById(R.id.txtInBedEndTime);
 		
 	}
@@ -108,7 +107,7 @@ public class SetInBedTime extends Activity{
 			}
 
 		}else{
-			//if we come from debug button 11:46 start time
+			//if we come from debug button 11:46 default start time
 			inBedStartHour = 11;
 			inBedStartMin = 46;
 			//Regarding prescribed sleep time which we calculate from Other_Note (5 hr and 30 min)
@@ -134,24 +133,32 @@ public class SetInBedTime extends Activity{
 		inBedStartPointTotalMin = inBedStartMin + (inBedStartHour * 60);
 		seekInBedStartTime.setProgress(inBedStartPointTotalMin);
 		
-		inBedEndPointTotalMin = inBedEndMin + (inBedEndHour * 60);
-		seekInBedEndTime.setProgress(inBedEndPointTotalMin);
+//		inBedEndPointTotalMin = inBedEndMin + (inBedEndHour * 60);
+//		seekInBedEndTime.setProgress(inBedEndPointTotalMin);
 	}
 	
-	private void setStartTimeDisplay(int totalMin){
+	private void setInBedTimeDisplay(int totalMin){
 		inBedStartHour = totalMin/60;
 		inBedStartMin = totalMin % 60;
 		inBedStartTimeString = String.format("%02d:%02d", inBedStartHour,inBedStartMin);
 		Log.i(TAG,"inBedStartTimeString:- " + inBedStartTimeString);
 		textInBedStartTime.setText(inBedStartTimeString);
-	}
-	private void setEndTimeDisplay(int totalMin){
-		inBedEndHour = totalMin/60;
-		inBedEndMin = totalMin % 60;
+		//Calculation of In Bed End hour
+		inBedEndHour = inBedStartHour + inBedTotalHour;
+		inBedEndMin = inBedStartMin + inBedTotalMin;
+		
+		if(inBedEndMin > 59){
+			inBedEndHour = inBedEndHour + (inBedEndMin / 60);
+			inBedEndMin = inBedEndMin % 60;
+		}
+		if(inBedEndHour>24){
+			inBedEndHour = inBedEndHour - 24;
+		}
 		inBedEndTimeString = String.format("%02d:%02d", inBedEndHour,inBedEndMin);
 		Log.i(TAG,"inBedStartTimeString:- " + inBedEndTimeString);
 		textInBedEndTime.setText(inBedEndTimeString);
 	}
+	
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
