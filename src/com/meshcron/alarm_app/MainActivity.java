@@ -86,6 +86,7 @@ public class MainActivity extends FragmentActivity {
 		stopwatch=(ImageButton)findViewById(R.id.img_stopwatch);
 		mAdapter = new TabsPagerAdapter(getSupportFragmentManager());
 		viewPager.setAdapter(mAdapter);
+		
 		alarm.setOnClickListener(new OnClickListener() {
 			
 			@Override
@@ -132,5 +133,17 @@ public class MainActivity extends FragmentActivity {
 			public void onPageScrollStateChanged(int position) {
 			}
 		});
+		//If we come from other screen (Ex. S10,S12) need to start S1
 	}
+	
+	@Override
+	protected void onResume() {
+		// TODO Auto-generated method stub
+		super.onResume();
+		Intent i = getIntent();
+		String screen = i.getStringExtra("Goto");
+		if(screen!=null && screen.equals("Clock_tab")){
+			viewPager.setCurrentItem(1);
+		}
+	}	
 }

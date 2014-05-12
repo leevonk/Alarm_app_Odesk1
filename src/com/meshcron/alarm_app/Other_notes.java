@@ -124,8 +124,6 @@ public class Other_notes extends Activity {
 						editor_m.putInt("mins",tot_mins);
 						editor.commit();
 						count++;
-						Intent in=new Intent(Other_notes.this,Alarm_tab.class);
-						startActivity(in);
 				 }
 				 else if(dayOfTheWeek.equals("Tuesday")){
 					 SharedPreferences tues = getSharedPreferences("tuesday", Context.MODE_PRIVATE);
@@ -183,6 +181,12 @@ public class Other_notes extends Activity {
 				//If its finish of one week need to show set In Bed time activity on continue 	
 				if(get_con>7){
 					startSetInBedTimeAcitvity();
+				}else{
+					//Or Jump to main activity
+					Intent i = new Intent(Other_notes.this, MainActivity.class);
+					i.putExtra("Goto", "Clock_tab");
+					i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+					startActivity(i);
 				}
 			}
 		});
